@@ -7,7 +7,6 @@ long long llabs(long long x) {
 
 void read_input(long long *x, long long *y) {
 	long long nitems;
-	printf("Input a and b\n");
 	nitems = scanf("%lld%lld", x, y);
 	if (nitems != 2) {
 		printf("Incorrect input");
