@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long long iabs(long long x) { return (x < 0) ? -x : x; }
+long long llabs(long long x) { return (x < 0) ? -x : x; }
 
 long long eu_mod(long long x, long long y) {
   long long r;
   assert(y != 0);
   r = x % y;
   if (r < 0)
-    r += iabs(y);
+    r += llabs(y);
   return r;
 }
 
@@ -18,16 +18,16 @@ long long gcd(long long x, long long y) {
 	long long t;
 	assert(x != 0 || y != 0);
 	if (x == 0)
-		return iabs(y);
+		return llabs(y);
 	if (y == 0)
-		return iabs(x);
+		return llabs(x);
 	q = eu_mod(x, y);
 	while (q != 0) {
 		t = q;
 		q = eu_mod(y, q);
 		y = t;
 	}
-	return iabs(y);	
+	return llabs(y);	
 }
 
 int main() {
