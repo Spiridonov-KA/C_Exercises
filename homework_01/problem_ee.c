@@ -17,9 +17,9 @@ void read_input(long long *x, long long *y) {
 long long extended_gcd(long long a, long long b, long long *x, long long *y) {
 	long long x1, y1, g;
 	if (b == 0) {
-		*x = 1;
+		*x = llabs(a) / a;
 		*y = 0;
-		return a;
+		return llabs(a);
 	}
 	g = extended_gcd(b, ((a % b) + llabs(b)) % llabs(b), &x1, &y1);
 	*x = y1;
