@@ -3,6 +3,11 @@
 #include <assert.h>
 #include <math.h>
 
+struct sieve_t {
+	char *sieve;
+	unsigned size;
+};
+
 void read_input(unsigned long long *n) {
 	int nitems = scanf("%lld", n);
 	if (nitems != 1) {
@@ -21,33 +26,47 @@ unsigned long long sieve_bound(unsigned long long n) {
 	return (unsigned long long) round(dres);
 }
 
-void init_sieve(unsigned char *sieve, unsigned long long size) {
-	unsigned long long i, j;
-	for (i = 2; i * i <= size; ++i) {
-		for (j = i * i; j <= size; j += i) {
-			// printf("%lld\n", j);
-			sieve[j] = 1;
+void fill_sieve(struct sieve_t *s) {
+	for (unsigned i = 2; i * i < s->size + 10; ++i) {
+		if (s->sieve[i] == 0) {
+			for (unsigned j = i; i * j < s->size + 10; ++j) {
+				s->sieve[i * j] = 1;
+			}
 		}
 	}
 }
 
-unsigned long long get_number_of_prime_numbers(unsigned long long n) {
-	unsigned char *sieve;
+struct sieve_t* init_sieve(unsigned long long n) {
+	struct sieve_t *s = calloc(1, sizeof(struct sieve_t));
+	s->sieve = calloc(n, sizeof(char));
+	s->size = n;
+
+	fill_sieve(s);
+
+	return s;
+}
+
+unsigned long long count_primes_no_greater(struct sieve_t *s, unsigned long long n) {
 	unsigned long long res = 0;
-
-	n += 1;
-	sieve = calloc(n, sizeof(unsigned char));
-
-	init_sieve(sieve, n);
-
-	for (unsigned long long i = 2; i < n; ++i) {
-		if (sieve[i] == 0) {
+	for (unsigned long long i = 2; i <= n; ++i) {
+		if (s->sieve[i] == 0) {
 			++res;
-			// printf("%lld\n", i);
 		}
 	}
-
 	return res;
+}
+
+unsigned long long get_number_of_prime_numbers(unsigned long long n) {
+
+	unsigned long long sieve_len, prime_numbers;
+	struct sieve_t *s;
+
+	sieve_len = sieve_bound(n);
+	s = init_sieve(sieve_len);
+
+
+	prime_numbers = count_primes_no_greater(s, n);
+	return prime_numbers;
 }
 
 int main() {
