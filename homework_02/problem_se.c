@@ -56,6 +56,13 @@ unsigned long long count_primes_no_greater(struct sieve_t *s, unsigned long long
 	return res;
 }
 
+void free_sieve(struct sieve_t* s) {
+	free(s);
+	s->sieve = 0;
+	s->size = 0;
+}
+
+
 unsigned long long get_number_of_prime_numbers(unsigned long long n) {
 
 	unsigned long long sieve_len, prime_numbers;
@@ -66,6 +73,9 @@ unsigned long long get_number_of_prime_numbers(unsigned long long n) {
 
 
 	prime_numbers = count_primes_no_greater(s, n);
+
+	free_sieve(s);
+
 	return prime_numbers;
 }
 
