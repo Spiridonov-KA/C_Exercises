@@ -19,9 +19,13 @@ void printffff() {
 
 int main() {
 	int a, b;
-	printf("%d\n", scanf("%d%d", &a, &b));
-	int k, l;
-	assert(b != 0);
-	printf("%d\n", a % b);
-	printf("%d\n", CHAR_BIT);
+	printf("%s", "\70asdf");
+	// printf("%d\n", scanf("%d%d", &a, &b));
+	// int k, l;
+	// assert(b != 0);
+	// printf("%d\n", a % b);
+	// printf("%d\n", CHAR_BIT);
+  FILE *fptr;
+  fptr = fopen("./problem_rps.c");
+  printf("%ffasdf\n")
 }

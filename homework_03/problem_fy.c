@@ -7,13 +7,13 @@ void read_input(int *n, int **arr) {
 	res = scanf("%d", n);
 	*arr = calloc(*n, sizeof(int));
 	if (res != 1) {
-		printf("Incorrent input\n");
+		printf("Incorrect input\n");
 		abort();
 	}
 	for (int i = 0; i < *n; ++i) {
 		res = scanf("%d", &(*arr)[i]);
 		if (res != 1) {
-			printf("Incorrent input\n");
+			printf("Incorrect input\n");
 			abort();
 		}
 	}

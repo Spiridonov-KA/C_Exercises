@@ -1,20 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-void find_pos(int n, int *l, int *r) {
-	*l = -1;
-	*r = -1;
-	for (int k = 0; n > 0; n >>= 1, ++k) {
-		if (*r == -1 && n & 1) {
-			*r = k;
-		}
-		if (n == 1) {
-			*l = k;
-		}
-	}
-}
-
-#if 0
+#include <assert.h>
 
 void read_input(int *n) {
 	int res;
@@ -45,7 +31,6 @@ void find_bits(int n, int *first, int *second) {
 	}
 	*second = res;
 }
-#endif
 
 int main() {
 	int n;
@@ -59,18 +44,5 @@ int main() {
 	}
 	else {
 		printf("%d %d", second, first);
-	}
-}
-
-int main() {
-	int n, l, r;
-	scanf("%d", &n);
-
-	if (n) {
-		find_pos(n, &l, &r);
-		printf("%d %d", l, r);
-	}
-	else {
-		printf("-1");
 	}
 }

@@ -48,12 +48,12 @@ int find_max(const int *arr, const int n) {
 int main() {
 	int n;
 	int *arr;
-	int min, max;
+	int min_res, max_res;
 	read_input(&n, &arr);
 
-	min = find_min(arr, n);
-	max = find_max(arr, n);
-	printf("%d %d", min, max);
+	min_res = find_min(arr, n);
+	max_res = find_max(arr, n);
+	printf("%d %d", min_res, max_res);
 
 	free(arr);
 }
