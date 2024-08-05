@@ -9,7 +9,7 @@ struct node_t {
 
 // определяет длину петли в односвязном списке
 // возвращает длину если есть, 0 если петли нет
-int loop_len(struct node_t *top) {
+int loop_leng(struct node_t *top) {
     int len;
     struct node_t *fast;
     if (!top || !top->next || !top->next->next) {

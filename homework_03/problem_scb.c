@@ -9,6 +9,7 @@ int int_comp(const void *lhs, const void *rhs) {
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) {
+    base = (char *) base;
     int l = -1, r = num, m;
     while (l <= r) {
         m = (l + r) / 2;
