@@ -6,5 +6,4 @@ struct node_t {
 };
 
 int main() {
-
 }
